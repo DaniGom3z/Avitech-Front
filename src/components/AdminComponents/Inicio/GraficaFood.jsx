@@ -18,28 +18,28 @@ const RealTimeChart = () => {
             labels: [],
             datasets: [
               {
-                label: 'Temperatura (°C)',
+                label: 'Temperatura Promedio (°C)',
                 data: [],
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderWidth: 1,
               },
               {
-                label: 'Humedad (%)',
+                label: 'Humedad Promedio (%)',
                 data: [],
                 borderColor: 'rgba(54, 162, 235, 1)',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderWidth: 1,
               },
               {
-                label: 'Nivel de agua (cm)',
+                label: 'Nivel de Agua Restante (cm)',
                 data: [],
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderWidth: 1,
               },
               {
-                label: 'Nivel de comida (cm)',
+                label: 'Nivel de Comida Restante (cm)',
                 data: [],
                 borderColor: 'rgba(153, 102, 255, 1)',
                 backgroundColor: 'rgba(153, 102, 255, 0.2)',
@@ -71,10 +71,11 @@ const RealTimeChart = () => {
       if (chart) {
         chart.data.labels.push(currentTime);
 
-        chart.data.datasets[0].data.push(data.dht11.temperatura);
-        chart.data.datasets[1].data.push(data.dht11.humedad);
-        chart.data.datasets[2].data.push(data.ultrasonico.agua);
-        chart.data.datasets[3].data.push(data.ultrasonico.comida);
+        // Actualiza los datos con los valores de los nuevos datos
+        chart.data.datasets[0].data.push(data.temperaturaPromedio);
+        chart.data.datasets[1].data.push(data.humedadPromedio);
+        chart.data.datasets[2].data.push(data.aguaRestante);
+        chart.data.datasets[3].data.push(data.comidaRestante);
 
         if (chart.data.labels.length > 10) {
           chart.data.labels.shift();
